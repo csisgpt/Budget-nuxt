@@ -1,0 +1,66 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [20, 22]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8.15.4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: 'pnpm'
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm lint
+      - run: pnpm typecheck
+      - run: pnpm test:unit
+      - run: pnpm build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nuxt-output-${{ matrix.node }}
+          path: apps/web/.output
+  e2e:
+    needs: build
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_DB: orgaflow
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
+      redis:
+        image: redis:7
+        ports:
+          - 6379:6379
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8.15.4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm db:migrate
+      - run: pnpm db:seed
+      - run: pnpm test:e2e
+        env:
+          NODE_ENV: test
+          DATABASE_URL: postgresql://postgres:postgres@localhost:5432/orgaflow
+          REDIS_URL: redis://localhost:6379
+          SESSION_SECRET: test-secret
+          JWT_SECRET: test-secret

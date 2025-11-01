@@ -1,0 +1,17 @@
+{
+  "nav": {
+    "home": "Home",
+    "blog": "Blog",
+    "docs": "Docs",
+    "dashboard": "Dashboard",
+    "admin": "Admin"
+  },
+  "auth": {
+    "signin": "Sign in",
+    "signup": "Create account"
+  },
+  "hero": {
+    "title": "Run your organization with OrgaFlow",
+    "subtitle": "A complete multi-tenant workspace for collaboration, projects, and growth"
+  }
+}

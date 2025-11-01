@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title>OrgaFlow Icon</title>
+  <desc>Stylised flowing O monogram in gradient colors</desc>
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f766e" />
+      <stop offset="100%" stop-color="#16a34a" />
+    </linearGradient>
+  </defs>
+  <rect width="256" height="256" rx="56" fill="url(#grad)" />
+  <path
+    d="M190 84c0 46.4-22.7 88-62 88s-62-41.6-62-88C66 67.9 84.3 56 128 56s62 11.9 62 28z"
+    fill="none"
+    stroke="#ecfdf5"
+    stroke-width="24"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+  <circle cx="168" cy="160" r="28" fill="#ecfdf5" opacity="0.85" />
+</svg>

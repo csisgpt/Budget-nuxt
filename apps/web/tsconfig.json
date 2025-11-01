@@ -1,0 +1,21 @@
+{
+  "extends": "../../packages/config/tsconfig/nuxt.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "#ui/*": ["../../packages/ui/src/*"],
+      "#config/*": ["../../packages/config/*"],
+      "#server/*": ["./server/*"],
+      "#types/*": ["./types/*"]
+    }
+  },
+  "include": [
+    "nuxt.config.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.vue",
+    "**/*.mjs",
+    "**/*.cjs",
+    "**/*.json"
+  ]
+}
