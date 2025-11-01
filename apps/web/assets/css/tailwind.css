@@ -1,0 +1,25 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-primary: #059669;
+  --color-secondary: #0f172a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  direction: rtl;
+  background-color: rgb(var(--color-bg, 255 255 255));
+  color: rgb(var(--color-fg, 15 23 42));
+}
+
+[data-theme='dark'] body {
+  --color-bg: 15 23 42;
+  --color-fg: 226 232 240;
+}
+
+.container {
+  @apply mx-auto w-full px-4 sm:px-6 lg:px-8;
+}
