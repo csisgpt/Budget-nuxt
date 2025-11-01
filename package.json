@@ -1,0 +1,39 @@
+{
+  "name": "orgaflow-monorepo",
+  "private": true,
+  "packageManager": "pnpm@8.15.4",
+  "version": "0.1.0",
+  "scripts": {
+    "dev": "pnpm --filter @orgaflow/web dev",
+    "build": "pnpm --filter @orgaflow/web build",
+    "preview": "pnpm --filter @orgaflow/web preview",
+    "typecheck": "pnpm -r typecheck",
+    "lint": "pnpm -r lint",
+    "lint:fix": "pnpm -r lint:fix",
+    "format": "pnpm -r format",
+    "test:unit": "pnpm --filter @orgaflow/web test:unit",
+    "test:e2e": "pnpm --filter @orgaflow/web test:e2e",
+    "coverage": "pnpm --filter @orgaflow/web coverage",
+    "db:migrate": "pnpm --filter @orgaflow/web db:migrate",
+    "db:generate": "pnpm --filter @orgaflow/web db:generate",
+    "db:seed": "pnpm --filter @orgaflow/web db:seed",
+    "db:reset": "pnpm --filter @orgaflow/web db:reset",
+    "openapi:gen": "pnpm --filter @orgaflow/web openapi:gen",
+    "docker:up": "docker compose -f infrastructure/docker/docker-compose.dev.yml up -d",
+    "docker:down": "docker compose -f infrastructure/docker/docker-compose.dev.yml down",
+    "docker:logs": "docker compose -f infrastructure/docker/docker-compose.dev.yml logs -f",
+    "story": "pnpm --filter @orgaflow/ui story",
+    "story:build": "pnpm --filter @orgaflow/ui story:build",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.2"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx,vue,css,scss,json,md,yaml,yml}": [
+      "pnpm lint",
+      "pnpm format"
+    ]
+  }
+}

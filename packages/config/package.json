@@ -1,0 +1,11 @@
+{
+  "name": "@orgaflow/config",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./eslint": "./eslint/index.cjs",
+    "./stylelint": "./stylelint/index.cjs",
+    "./tsconfig": "./tsconfig/base.json"
+  }
+}

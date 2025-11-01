@@ -1,0 +1,10 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "OrgaFlow API",
+    "version": "1.0.0",
+    "description": "Documented REST endpoints for OrgaFlow SaaS"
+  },
+  "paths": {},
+  "components": {}
+}
